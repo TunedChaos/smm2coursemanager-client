@@ -32,6 +32,7 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
+- git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 - brew install git-lfs
 
 before_script:
