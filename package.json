@@ -25,13 +25,15 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "src/images/icons/favicon"
+        "icon": "src/images/icons/favicon",
+        "executableName": "smm2coursemanager-client"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "setupExe": "smm2coursemanager-client-setup.exe",
+            "exe": "smm2coursemanager-client.exe",
             "title": "SMM2 Course Manager Client",
             "iconUrl": "https://smm2.tunedchaos.tech/favicon.ico",
             "setupIcon": "src/images/icons/favicon.ico",
