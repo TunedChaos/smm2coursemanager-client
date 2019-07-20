@@ -12,7 +12,11 @@
     "lint": "echo \"No linting configured\"",
     "dev": "nodemon --watch * --exec electron-forge start"
   },
-  "repository": "https://github.com/TunedChaos/smm2coursemanager-client",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/TunedChaos/smm2coursemanager-client.git"
+  },
   "keywords": [
     "mariomaker2",
     "nintendo",
@@ -22,6 +26,7 @@
     "name": "Tuned Chaos LLC"
   },
   "license": "MIT",
+  "homepage": "https://github.com/TunedChaos/smm2coursemanager-client",
   "config": {
     "forge": {
       "packagerConfig": {
