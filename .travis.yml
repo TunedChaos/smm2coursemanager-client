@@ -33,6 +33,7 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
+- apt-get install build-essential curl file git
 - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 - test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 - test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
