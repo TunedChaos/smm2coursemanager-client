@@ -32,7 +32,11 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
-- git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+- sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+- test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+- test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+- test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+- echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 - brew install git-lfs
 
 before_script:
