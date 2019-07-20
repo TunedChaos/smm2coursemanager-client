@@ -32,7 +32,7 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
-- /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 - brew install git-lfs
 
 before_script:
