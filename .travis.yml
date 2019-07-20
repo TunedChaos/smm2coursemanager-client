@@ -40,9 +40,9 @@ deploy:
   file_glob: true
   file: 
     - out/make/**/*.exe
-    - out/make/*.rpm
-    - out/make/*.deb
-    - out/make/*.dmg
+    - out/make/**/*.rpm
+    - out/make/**/*.deb
+    - out/make/**/*.dmg
   skip_cleanup: true
   on:
     repo: TunedChaos/smm2coursemanager-client
