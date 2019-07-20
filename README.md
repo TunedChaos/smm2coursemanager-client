@@ -1,6 +1,6 @@
 # SMM2CourseManager Client
 
-SMM2CourseManager Client is an administrative utility to work with the SMM2CourseManager Server
+SMM2CourseManager Client is an administrative utility to work with the [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server)
 
 ## Installation
 ### Windows
@@ -17,9 +17,22 @@ TODO
 ```
 
 ## Building from Source
+Clone this repository
+```bash
+git clone git@github.com:TunedChaos/smm2coursemanager-client.git
 ```
-TODO
+
+Run the Node.js&reg; Package Manager Installer
+```bash
+npm install
 ```
+
+Build with electron-forge
+```bash
+electron-forge make
+```
+
+The build should automatically detect your platform and give you the appropriate file(s) to run.
 
 ## Common Issues
 - The loading screen is taking a long time
