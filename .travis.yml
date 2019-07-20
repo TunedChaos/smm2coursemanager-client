@@ -33,12 +33,6 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
-- if ["$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install software-properties-common ; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository ppa:git-core/ppa ; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get update ; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh ; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; sudo apt-get install git-lfs; fi
-
 - if ["$TRAVIS_OS_NAME" = "osx" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
 - if ["$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
 - if ["$TRAVIS_OS_NAME" = "osx" ]; then brew install git-lfs; fi
