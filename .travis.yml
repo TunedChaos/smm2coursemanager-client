@@ -34,14 +34,14 @@ after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
 - if ["$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install build-essential curl file git ; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv); fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv); fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile; fi
-- if ["$TRAVIS_OS_NAME" = "linux" ]; brew install git-lfs; fi
-- if ["$TRAVIS_OS_NAME" = "osx" ]; /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
-- if ["$TRAVIS_OS_NAME" = "osx" ]; brew install git-lfs; fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"; fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv); fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv); fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile; fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile; fi
+- if ["$TRAVIS_OS_NAME" = "linux" ]; then brew install git-lfs; fi
+- if ["$TRAVIS_OS_NAME" = "osx" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
+- if ["$TRAVIS_OS_NAME" = "osx" ]; then brew install git-lfs; fi
 
 
 before_script:
