@@ -42,7 +42,4 @@ before_install:
 - if ["$TRAVIS_OS_NAME" = "linux" ]; then brew install git-lfs; fi
 - if ["$TRAVIS_OS_NAME" = "osx" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
 - if ["$TRAVIS_OS_NAME" = "osx" ]; then brew install git-lfs; fi
-
-
-before_script:
 - git lfs pull
