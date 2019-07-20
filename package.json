@@ -1,6 +1,5 @@
 {
   "name": "smm2coursemanager-client",
-  "executableName": "smm2coursemanager-client",
   "productName": "SMM2 Course Manager Client",
   "version": "1.0.0",
   "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
@@ -33,7 +32,7 @@
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "setupExe": "smm2coursemanager-client-setup.exe",
-            "title": "Super Mario Maker 2 Course Manager Client",
+            "title": "SMM2 Course Manager Client",
             "iconUrl": "https://smm2.tunedchaos.tech/favicon.ico",
             "setupIcon": "src/images/icons/favicon.ico",
             "loadingGif": "src/images/loading.gif",
