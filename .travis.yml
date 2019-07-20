@@ -1,17 +1,15 @@
 language: node_js
-node_js: "8"
+node_js: '8'
 os:
 - linux
 - osx
 - windows
 dist: xenial
 osx_image: xcode10.1
-
 cache:
   npm: true
   directories:
-  - $HOME/.cache/electron
-
+  - "$HOME/.cache/electron"
 addons:
   apt:
     packages:
@@ -19,23 +17,31 @@ addons:
     - rpm
   homebrew:
     packages:
-      - git-lfs
+    - git-lfs
     update: true
-
 branches:
   only:
   - master
-  - /^v\d+\.\d+\.\d+/
-
+  - "/^v\\d+\\.\\d+\\.\\d+/"
 install:
 - npm install
 - npm update
-
 script:
 - npm run lint
 - if test -z "$TRAVIS_TAG"; then npm run make; fi
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
-
 before_install:
 - git lfs install
 - git lfs pull
+deploy:
+  provider: releases
+  api_key:
+    secure: k3+JFsQcU+7h7ifNe1B3UdPLOgXGpgAyGqrFh87SqlmazSDOMVHKyX6nolAhczyftYSXQmZkR9tD2cGmtQ9+Zc+aLH0UKNBKLnDd+0j0j1mApLTSfjulfZXK587b2JjeIMjgxGzDIpvy5g+gCdMc36qF8fjyjfhwKnf1ypOESBWdWgAmm79LL3Onm+vRk4mO/0lj015WNXBOHyQQUd1Dc4OvI3YWM4mFUqJViwrK/HVZ0x3vln+yibNWtxksUITCmIoK9vWQZ/xvAXOnUIkm9IyKupZNhVC9lAP/GNsHkbG7uiyUlEDwsb1EYqQ79TWqS5vqMbc5rk4kncz+QlW+S/LFwV/qgNVmVmQfSX1PtBNJYOetbrHwJuLJd88RhKACFNUTEdeuToheKsLyDW0sHPdaEXO3nr1TKSATORLAAip3KDTZTxfXc9LFBs2m+prWWpfwXVvPC8j+0e3u9MsSA7Kvh1A6oPO72bc58a7ckqo39YxzUl6OFksGtT/wotVjVXRDgU3CA+wo6BRdGY/cirzAZqWKf+v8aqQrPX5Fhj54x7DgHfV8IIOlvcbEvIWF5VHvZvs3xI1el3r05hWgogbDsOEoGjzOFqLD5WzsusueKLYnnYQAISRXQui/picNb9bCC+812tT1myR3o/0TMA5IriunnV2TyE7Uik26FG4=
+  file: 
+    - "./out/make/squirrel.windows/x64/smm2coursemanager-client-setup.exe"
+    #- "./out/make/"
+    #- ""
+  skip_cleanup: true
+  on:
+    repo: TunedChaos/smm2coursemanager-client
+    tags: true
