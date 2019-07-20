@@ -32,7 +32,7 @@ Build with electron-forge
 electron-forge make
 ```
 
-The build should automatically detect your platform and give you the appropriate file(s) to run.
+The build should automatically detect your platform and give you the appropriate file(s) to run. You will need to find the `out` directory in the project's root, then the `make` directory. From here you will find your installer.
 
 ## Common Issues
 - The loading screen is taking a long time

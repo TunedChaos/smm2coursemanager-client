@@ -1,5 +1,6 @@
 {
   "name": "smm2coursemanager-client",
+  "executableName": "smm2coursemanager-client",
   "productName": "Super Mario Maker 2 Course Manager Client",
   "version": "1.0.0",
   "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
@@ -25,35 +26,51 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "src/images/icons/favicon",
-        "executableName": "smm2coursemanager-client"
+        "icon": "src/images/icons/favicon"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "smm2coursemanager_electron_client",
-            "title": "smm2coursemanager_electron_client",
+            "setupExe": "smm2coursemanager-client-setup.exe",
+            "title": "Super Mario Maker 2 Course Manager Client",
             "iconUrl": "https://smm2.tunedchaos.tech/favicon.ico",
-            "setupIcon": "src/images/icons/favicon.ico"
+            "setupIcon": "src/images/icons/favicon.ico",
+            "loadingGif": "src/images/loading.gif",
+            "authors": "Tuned Chaos LLC"
           }
         },
         {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO",
+            "name": "Super Mario Maker 2 Course Manager Client",
+            "icon": "src/images/icons/favicon.icns"
+          }
         },
         {
           "name": "@electron-forge/maker-deb",
           "config": {
-            "icon": "src/images/icons/favicon.png"
+            "options":{
+              "icon": "src/images/icons/favicon.png",
+              "name": "smm2coursemanager-client",
+              "genericName": "Super Mario Maker 2 Course Manager Client",
+              "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
+              "productDescription": "A management client for managing submissions of Super Mario Maker 2 courses.",
+              "homepage": "https://github.com/TunedChaos/smm2coursemanager-client"
+            }
           }
         },
         {
           "name": "@electron-forge/maker-rpm",
           "config": {
-            "icon": "src/images/icons/favicon.png"
+            "options":{
+              "name": "smm2coursemanager-client",
+              "genericName": "Super Mario Maker 2 Course Manager Client",
+              "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
+              "productDescription": "A management client for managing submissions of Super Mario Maker 2 courses.",
+              "homepage": "https://github.com/TunedChaos/smm2coursemanager-client"
+            }
           }
         }
       ]
