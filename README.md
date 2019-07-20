@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/TunedChaos/smm2coursemanager-client.svg?branch=master)](https://travis-ci.org/TunedChaos/smm2coursemanager-client)
 # SMM2CourseManager Client
 
-SMM2CourseManager Client is an administrative utility to work with the [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server)
+SMM2CourseManager Client is an administrative utility to work with the [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server){:target="_blank"}
 
 ## Prerequisites
 - [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server)
