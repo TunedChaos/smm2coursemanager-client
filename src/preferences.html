@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aboute Super Mario Maker 2 Course Manager</title>
+        <link rel="stylesheet" href="./stylesheets/preferences.css">
+    </head>
+    <body>
+        <div id="contentdiv">
+            <div id="header">
+                <div style="display: table-row">
+                    <div id='headerlogo'>
+                        <img class='headerimg' src='./images/icons/favicon.png'>
+                    </div>
+                    <div class='headertitle'>
+                        Preferences
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div id="content">
+                <table>
+                    <tr>
+                        <td>
+                            <label>Encryption Key:</label>
+                        </td>
+                        <td>
+                                <input id="encryptionKey">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Authentication Code:</label>
+                        </td>
+                        <td>
+                            <input id="authCode">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Server Address:</label>
+                        </td>
+                        <td>
+                            <input id="serverAddress">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id='footer'>
+                <button value="OK" onclick="closePreferenceWindow()">OK</button>
+            </div>
+        </div>
+    </body>
+    <script src="./javascripts/preferences.js"></script>
+</html>

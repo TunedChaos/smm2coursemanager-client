@@ -1,0 +1,186 @@
+@font-face{
+    font-family: SMM;
+    src: url(../fonts/SMM.ttf) format('truetype')
+}
+
+a:link{
+    color: red;
+    text-decoration: none;
+}
+
+a:hover{
+    color: red;
+    text-decoration: underline;
+}
+
+a:visited{
+    color: red;
+    text-decoration: none;
+}
+
+a:active{
+    color: purple;
+    text-decoration: none;
+}
+
+#coursetable{
+    background-color: white;
+    color: black;
+    margin: auto;
+    border-spacing: 0px;
+    width: 100%;
+    border-collapse: collapse;
+}
+#contentcontainer {
+    width: 50%;
+    background-color: white;
+    text-align: center;
+    margin: auto;
+}
+#contentdiv{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+input{
+    text-align: center;
+}
+
+.updateInput{
+    border: 0px;
+}
+
+.courseStatusSelect{
+    border: 0px;
+}
+
+select{
+    text-align: center;
+}
+
+.celldisplay
+{
+    border: 1px solid black;
+    text-align: center;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #1e1e1e;
+}
+
+th{
+    background-color: #facd00;
+    background-image: linear-gradient(#facd00,#d2ad00);
+}
+
+h1
+{
+    color: white;
+    font-family: SMM;
+}
+button{
+    font-family: SMM;
+    cursor: pointer;
+    background-color: #facd00;
+    background-image: linear-gradient(#facd00,#d2ad00);
+    border: 1px solid black;
+}
+
+
+button:active{
+    font-family: SMM;
+    cursor: pointer;
+    background-color: #d2ad00;
+    background-image: linear-gradient(#d2ad00,#facd00);
+    border: 1px solid black;
+}
+
+td button{
+    width: 100%;
+    cursor: pointer;
+}
+#newCourseCode{
+    color: lightgray
+}
+#newSubmitter{
+    color: lightgray
+}
+
+#messagediv{
+    background-color: white;
+    margin: auto;
+    border-spacing: 0px;
+    width: 100%;
+    border-collapse: collapse;
+    visibility: hidden;
+    display: none;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes red-fade {
+    from {
+        background: red;
+    }
+    to {
+        background: white;
+    }
+}
+@-moz-keyframes red-fade {
+    from {
+        background: red;
+    }
+    to {
+        background: white;
+    }
+}
+@keyframes red-fade {
+    from {
+        background: red;
+    }
+    to {
+        background: white;
+    }
+}
+
+.redfade {
+    -webkit-animation: red-fade 1s ease-in-out 0s;
+    -moz-animation: red-fade 1s ease-in-out 0s;
+    -o-animation: red-fade 1s ease-in-out 0s;
+    animation: red-fade 1s ease-in-out 0s;
+}
+
+@-webkit-keyframes green-fade {
+    from {
+        background: green;
+    }
+    to {
+        background: white;
+    }
+}
+@-moz-keyframes green-fade {
+    from {
+        background: green;
+    }
+    to {
+        background: white;
+    }
+}
+@keyframes green-fade {
+    from {
+        background: green;
+    }
+    to {
+        background: white;
+    }
+}
+
+.greenfade{
+    -webkit-animation: green-fade 1s ease-in-out 0s;
+    -moz-animation: green-fade 1s ease-in-out 0s;
+    -o-animation: green-fade 1s ease-in-out 0s;
+    animation: green-fade 1s ease-in-out 0s;
+}

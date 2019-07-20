@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Super Mario Maker 2 Course Manager</title>
+    <link rel="stylesheet" href="./stylesheets/statusbar.css">
+  </head>
+  <body>
+    <div id="contentdiv">
+      <div id="draggable">Embed this in your stream with this URL.</div>
+      <div id="contentcontainer">
+        <div class="tooltip">
+            <input class="tooltip" id="statusbaraddress" onclick="selectAndCopy(this)" onkeydown="resetThis(this)" onkeyup="resetThis(this)" onchange="resetThis(this)">
+            <span id="tooltiptext" class="tooltiptext">Address copied to clipboard</span>
+        </div>
+      </div>
+    </div>
+    <script src="./javascripts/statusbar.js"></script>
+  </body>
+</html>

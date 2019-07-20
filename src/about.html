@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aboute Super Mario Maker 2 Course Manager</title>
+        <link rel="stylesheet" href="./stylesheets/about.css">
+    </head>
+    <body>
+        <div id="contentdiv">
+            <div id="header">
+                <div style="display: table-row">
+                    <div id='headerlogo'>
+                        <img class='headerimg' src='./images/icons/favicon.png'>
+                    </div>
+                    <div class='headertitle'>
+                        Super Mario Maker 2<br />Course Manager
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div id="content">
+                Super Mario Maker 2 Course Manager
+                <br />
+                Version <span id='versionNumber'></span>
+                <br /><br />
+                &copy; Tuned Chaos LLC 2019, <a href="#" onclick="openBrowserWindow('https://github.com/TunedChaos/smm2coursemanager/blob/master/LICENSE.md')">MIT License</a>
+                <hr />
+                This software makes use of the following:<br /><br />
+                Electron | <a href="#" onclick="openBrowserWindow('https://github.com/electron/electron/blob/master/LICENSE')">License</a><br />
+                Electron-Forge | <a href="#" onclick="openBrowserWindow('https://github.com/electron-userland/electron-forge/blob/master/LICENSE')">License</a><br />
+                Electron-Store | <a href="#" onclicke="openBrowserWindow('https://github.com/sindresorhus/electron-store/blob/master/license')">License</a>
+                Socket.io | <a href="#" onclick="openBrowserWindow('https://github.com/socketio/socket.io/blob/master/LICENSE')">License</a><br />
+                dotenv | <a href="#" onclick="openBrowserWindow('https://github.com/bkeepers/dotenv/blob/master/LICENSE')">License</a><br />
+            </div>
+            <div id='footer'>
+                <button autofocus value="OK" onclick="closeAboutWindow()">OK</button>
+            </div>
+        </div>
+    </body>
+    <script src="./javascripts/about.js"></script>
+</html>

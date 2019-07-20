@@ -1,0 +1,76 @@
+{
+  "name": "smm2coursemanager-client",
+  "productName": "Super Mario Maker 2 Course Manager Client",
+  "version": "1.0.0",
+  "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "dev": "nodemon --watch * --exec electron-forge start"
+  },
+  "repository": "https://github.com/TunedChaos/smm2coursemanager-client",
+  "keywords": [
+    "mariomaker2",
+    "nintendo",
+    "switch"
+  ],
+  "author": {
+    "name": "Tuned Chaos LLC"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "src/images/icons/favicon"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "smm2coursemanager_electron_client",
+            "title": "smm2coursemanager_electron_client",
+            "iconUrl": "https://smm2.tunedchaos.tech/favicon.ico",
+            "setupIcon": "src/images/icons/favicon.ico"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "icon": "src/images/icons/smallicon.png"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {
+            "icon": "src/images/icons/smallicon.png"
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^4.0.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.42",
+    "@electron-forge/maker-deb": "^6.0.0-beta.42",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.42",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.42",
+    "@electron-forge/maker-zip": "^6.0.0-beta.42",
+    "electron": "5.0.7",
+    "nodemon": "^1.19.1"
+  }
+}
