@@ -69,6 +69,7 @@
           "name": "@electron-forge/maker-rpm",
           "config": {
             "options": {
+              "icon": "src/images/icons/favicon.png",
               "name": "smm2coursemanager-client",
               "genericName": "SMM2 Course Manager Client",
               "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
