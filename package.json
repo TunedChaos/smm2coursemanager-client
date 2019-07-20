@@ -1,7 +1,7 @@
 {
   "name": "smm2coursemanager-client",
   "executableName": "smm2coursemanager-client",
-  "productName": "Super Mario Maker 2 Course Manager Client",
+  "productName": "SMM2 Course Manager Client",
   "version": "1.0.0",
   "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
   "main": "src/index.js",
@@ -47,7 +47,7 @@
           ],
           "config": {
             "format": "ULFO",
-            "name": "Super Mario Maker 2 Course Manager Client",
+            "name": "SMM2 Course Manager Client",
             "icon": "src/images/icons/favicon.icns"
           }
         },
@@ -57,7 +57,7 @@
             "options": {
               "icon": "src/images/icons/favicon.png",
               "name": "smm2coursemanager-client",
-              "genericName": "Super Mario Maker 2 Course Manager Client",
+              "genericName": "SMM2 Course Manager Client",
               "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
               "productDescription": "A management client for managing submissions of Super Mario Maker 2 courses.",
               "homepage": "https://github.com/TunedChaos/smm2coursemanager-client"
@@ -69,7 +69,7 @@
           "config": {
             "options": {
               "name": "smm2coursemanager-client",
-              "genericName": "Super Mario Maker 2 Course Manager Client",
+              "genericName": "SMM2 Course Manager Client",
               "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
               "productDescription": "A management client for managing submissions of Super Mario Maker 2 courses.",
               "homepage": "https://github.com/TunedChaos/smm2coursemanager-client"
