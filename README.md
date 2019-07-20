@@ -3,18 +3,7 @@
 SMM2CourseManager Client is an administrative utility to work with the [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server)
 
 ## Installation
-### Windows
-```
-TODO
-```
-### Linux
-```
-TODO
-```
-### MacOS
-```
-TODO
-```
+Download the appropriate [Latest Release](https://github.com/TunedChaos/smm2coursemanager-client/releases/latest)
 
 ## Building from Source
 Clone this repository
