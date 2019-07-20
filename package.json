@@ -42,6 +42,9 @@
         },
         {
           "name": "@electron-forge/maker-dmg",
+          "platforms": [
+            "darwin"
+          ],
           "config": {
             "format": "ULFO",
             "name": "Super Mario Maker 2 Course Manager Client",
