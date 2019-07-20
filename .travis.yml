@@ -17,6 +17,10 @@ addons:
     packages:
     - fakeroot
     - rpm
+  homebrew:
+    packages:
+      - git-lfs
+    update: true
 
 branches:
   only:
@@ -33,8 +37,5 @@ script:
 after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
 
 before_install:
-- if ["$TRAVIS_OS_NAME" = "osx" ]; then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; fi
-- if ["$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
-- if ["$TRAVIS_OS_NAME" = "osx" ]; then brew install git-lfs; fi
 - git lfs install
 - git lfs pull
