@@ -354,7 +354,7 @@ ipc.on('closePreferenceWindow', function(event, encryptKey, authenticationCode, 
   })
   store.set('authCode', authenticationCode)
   store.set('serverAddress', servAddr)
-  
+
   global.sharedSettings = {
     serverAddress: servAddr,
     authCode: authenticationCode
@@ -366,9 +366,12 @@ ipc.on('closePreferenceWindow', function(event, encryptKey, authenticationCode, 
   mainWindow.reload()
   aboutWindow.reload()
   preferenceWindow.hide()
-  loadingScreen.once('ready-to-show', () => {
-    loadingScreen.show()
-  })
+  if(loadingScreen !== null)
+  {
+    loadingScreen.once('ready-to-show', () => {
+      loadingScreen.show()
+    })
+  }
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })

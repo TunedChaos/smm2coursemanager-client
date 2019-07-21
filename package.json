@@ -1,7 +1,7 @@
 {
   "name": "smm2coursemanager-client",
   "productName": "SMM2 Course Manager Client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
   "main": "src/index.js",
   "scripts": {
