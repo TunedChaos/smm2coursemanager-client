@@ -153,7 +153,6 @@ function createWindows () {
     show: false,
     closable: false
   })
-
   preferenceWindow.on('close', function(event){
     event.preventDefault()
   })
@@ -255,6 +254,14 @@ function createWindows () {
       mainWindow.show()
     })
   }
+
+
+  mainWindow.on('close', function() {
+    loadingScreen = null
+    childView = null
+    childWindow = null
+    preferenceWindow = null
+  })
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -373,6 +380,10 @@ ipc.on('closePreferenceWindow', function(event, encryptKey, authenticationCode, 
     })
   }
   mainWindow.once('ready-to-show', () => {
+    if(loadingScreen !== null)
+    {
+      loadingScreen.close()
+    }
     mainWindow.show()
   })
 })
