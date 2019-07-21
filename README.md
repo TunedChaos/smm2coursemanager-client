@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/github/release/TunedChaos/smm2coursemanager-client.svg)](https://github.com/TunedChaos/smm2coursemanager-client/releases) [![Build Status](https://travis-ci.org/TunedChaos/smm2coursemanager-client.svg?branch=master)](https://travis-ci.org/TunedChaos/smm2coursemanager-client) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/TunedChaos/smm2coursemanager-client/blob/master/LICENSE)
+[![Release](https://img.shields.io/github/release/TunedChaos/smm2coursemanager-client.svg)](https://github.com/TunedChaos/smm2coursemanager-client/releases) [![Build Status](https://travis-ci.org/TunedChaos/smm2coursemanager-client.svg?branch=master)](https://travis-ci.org/TunedChaos/smm2coursemanager-client) [![License: MIT](https://img.shields.io/github/license/tunedchaos/smm2coursemanager-client.svg)](https://github.com/TunedChaos/smm2coursemanager-client/blob/master/LICENSE)
 # SMM2CourseManager Client
 
 SMM2CourseManager Client is an administrative utility to work with the [SMM2CourseManager Server](https://github.com/TunedChaos/smm2coursemanager-server)
