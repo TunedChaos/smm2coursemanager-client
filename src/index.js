@@ -209,7 +209,6 @@ function createWindows () {
     childView = new BrowserView()
     childWindow.setBrowserView(childView)
     childView.setBounds({ x: 0, y: 56, width: 800, height: 56 })
-    childView.webContents.loadURL(store.get('serverAddress'))
     childView.setBackgroundColor("#1e1e1e")
     childWindow.setBackgroundColor = "#1e1e1e"
   }
@@ -247,6 +246,7 @@ function createWindows () {
       preferenceWindow.show()
     })
   }else if(hasConfig){
+    childView.webContents.loadURL(store.get('serverAddress'))
     loadingScreen.once('ready-to-show', () => {
       loadingScreen.show()
     })
