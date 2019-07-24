@@ -75,6 +75,7 @@ function createWindows () {
   var closeOption = ''
   if(process.platform === 'darwin'){
     closeOption = '&Quit'
+    acceleratorOption = 'Cmd+Q'
   }else{
     closeOption = 'E&xit'
   }
@@ -83,10 +84,19 @@ function createWindows () {
       label: '&File',
         submenu: [
           {
+            label: '&Reload',
+            click(){
+              childWindow.reload()
+              mainWindow.reload()
+            },
+            accelerator: 'CmdOrCtrl+R'
+          },
+          {
             label: '&Preferences',
             click(){
               showPreferenceWindow()
-            }
+            },
+            accelerator: 'CmdOrCtrl+P'
           },
           { type: 'separator' },
           {
