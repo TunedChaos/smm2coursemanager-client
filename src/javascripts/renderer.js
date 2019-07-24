@@ -68,7 +68,19 @@ function loadCourses(data){
     courseTableBuild += '</tbody>'
     document.getElementById('coursetable').innerHTML = courseTableBuild
     var courses = JSON.parse(data);
+    courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
     var courseBodyBuild = ''
+    courseBodyBuild += '<tr>'
+    courseBodyBuild += '<td class="celldisplay">'
+    courseBodyBuild += '<input id="newCourseCode" onfocusin="newCourseFocusIn(this)" onfocusout="newCourseFocusOut(this)" value="XXX-XXX-XXX">'
+    courseBodyBuild += '</td>'
+    courseBodyBuild += '<td class="celldisplay">'
+    courseBodyBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
+    courseBodyBuild += '</td>'
+    courseBodyBuild += '<td colspan="2" class="celldisplay">'
+    courseBodyBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
+    courseBodyBuild += '</td>'
+    courseBodyBuild += '</tr>'
     courses.forEach(course => {
         courseJSON = JSON.stringify(course)
         courseBodyBuild += '<tr>'
@@ -126,17 +138,6 @@ function loadCourses(data){
         courseBodyBuild += '<a href="#" data-courseid="' + course.CourseID + '" onclick="smm2_removeCourse(this)">X</a>'
         courseBodyBuild += '</td>'
     });
-    courseBodyBuild += '</tr>'
-    courseBodyBuild += '<tr>'
-    courseBodyBuild += '<td class="celldisplay">'
-    courseBodyBuild += '<input id="newCourseCode" onfocusin="newCourseFocusIn(this)" onfocusout="newCourseFocusOut(this)" value="XXX-XXX-XXX">'
-    courseBodyBuild += '</td>'
-    courseBodyBuild += '<td class="celldisplay">'
-    courseBodyBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
-    courseBodyBuild += '</td>'
-    courseBodyBuild += '<td colspan="2" class="celldisplay">'
-    courseBodyBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
-    courseBodyBuild += '</td>'
     courseBodyBuild += '</tr>'
     document.getElementById('coursebody').innerHTML = courseBodyBuild
 }
