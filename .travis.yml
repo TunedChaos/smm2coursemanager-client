@@ -38,6 +38,11 @@ before_script:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then electron-forge make --targets @electron-forge/maker-rpm; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir out/rpm; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cp out/make/rpm/x64/*.rpm out/rpm/; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ls out/make; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ls out/make/deb; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ls out/make/rpm; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ls out/make/deb/x64; fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then ls out/make/rpm/x64; fi
 before_install:
 - git lfs install
 - git lfs pull
