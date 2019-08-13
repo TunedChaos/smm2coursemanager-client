@@ -34,7 +34,7 @@ before_script:
 - npm i -g @electron-forge/cli
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then electron-forge make --targets @electron-forge/maker-deb; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir out/deb; fi
-- if [ "$TRAVIS_OS_NAME" = "linux" ]; then cp out/make/*.deb out/deb/; fi;
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then cp out/make/*.deb out/deb/; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then electron-forge make --targets @electron-forge/maker-rpm; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir out/rpm; fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then cp out/make/*.rpm out/rpm/; fi
