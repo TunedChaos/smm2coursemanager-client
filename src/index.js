@@ -192,7 +192,6 @@ function createWindows () {
     aboutWindow.webContents.openDevTools()
     preferenceWindow.webContents.openDevTools()
   }else{
-    mainWindow.webContents.openDevTools()
     childWindow = new BrowserWindow({
       title: 'SMM2_StatusBar',
       width: 800,
