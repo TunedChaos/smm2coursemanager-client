@@ -4,6 +4,7 @@
 const {ipcRenderer} = require('electron')
 var remote = require('electron').remote
 const {dialog} = require('electron').remote
+var dateFormat = require('dateformat')
 
 const io = require('socket.io-client')
 var socket = io.connect(remote.getGlobal('sharedSettings').serverAddress);
@@ -57,6 +58,8 @@ function loadCourses(data){
     courseTableBuild += '   <tr>'
     courseTableBuild += '       <th class="celldisplay">Course Code</th>'
     courseTableBuild += '       <th class="celldisplay">Submitter</th>'
+    courseTableBuild += '       <th class="celldisplay">Submitted on</th>'
+    courseTableBuild += '       <th class="celldisplay">Last Updated on</th>'
     courseTableBuild += '       <th class="celldisplay">Status</th>'
     courseTableBuild += '       <th class="celldisplay">Delete</th>'
     courseTableBuild += '  </tr>'
@@ -69,6 +72,7 @@ function loadCourses(data){
     document.getElementById('coursetable').innerHTML = courseTableBuild
     var courses = JSON.parse(data);
     courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
+    console.log(courses);
     var courseBodyBuild = ''
     courseBodyBuild += '<tr>'
     courseBodyBuild += '<td class="celldisplay">'
@@ -77,11 +81,16 @@ function loadCourses(data){
     courseBodyBuild += '<td class="celldisplay">'
     courseBodyBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
     courseBodyBuild += '</td>'
-    courseBodyBuild += '<td colspan="2" class="celldisplay">'
+    courseBodyBuild += '<td colspan="4" class="celldisplay">'
     courseBodyBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
     courseBodyBuild += '</td>'
     courseBodyBuild += '</tr>'
+    var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    var submittedDate = new Date()
+    var updatedDate = new Date()
     courses.forEach(course => {
+        submittedDate = dateFormat(course.createdAt,"mmmm d, yyyy h:M TT")
+        updatedDate = dateFormat(course.updatedAt,"mmmm d, yyyy h:M TT")
         courseJSON = JSON.stringify(course)
         courseBodyBuild += '<tr>'
         courseBodyBuild += '<td class="celldisplay">'
@@ -89,6 +98,12 @@ function loadCourses(data){
         courseBodyBuild += '</td>'
         courseBodyBuild += '<td class="celldisplay">'
         courseBodyBuild += '<input class="updateInput" onchange="smm2_updateRecord(this)" data-course=\'' + courseJSON + '\' id="SubmitterRecord" type="text" value="' + course.Submitter + '">'
+        courseBodyBuild += '</td>'
+        courseBodyBuild += '<td class="celldisplay">'
+        courseBodyBuild += submittedDate
+        courseBodyBuild += '</td>'
+        courseBodyBuild += '<td class="celldisplay">'
+        courseBodyBuild += updatedDate
         courseBodyBuild += '</td>'
         var statusValue = ''
         switch(course.Status){

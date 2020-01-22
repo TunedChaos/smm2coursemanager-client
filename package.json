@@ -1,7 +1,7 @@
 {
   "name": "smm2coursemanager-client",
   "productName": "SMM2 Course Manager Client",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A management client for managing submissions of Super Mario Maker 2 courses.",
   "main": "src/index.js",
   "scripts": {
@@ -12,8 +12,7 @@
     "lint": "echo \"No linting configured\"",
     "dev": "nodemon --watch * --exec electron-forge start"
   },
-  "repository":
-  {
+  "repository": {
     "type": "git",
     "url": "https://github.com/TunedChaos/smm2coursemanager-client.git"
   },
@@ -88,6 +87,7 @@
     }
   },
   "dependencies": {
+    "dateformat": "^3.0.3",
     "dotenv": "^8.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^4.0.0",
