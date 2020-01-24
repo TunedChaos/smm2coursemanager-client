@@ -7,18 +7,18 @@ const {dialog} = require('electron').remote
 var dateFormat = require('dateformat')
 
 const io = require('socket.io-client')
-var socket = io.connect(remote.getGlobal('sharedSettings').serverAddress);
+var socket = io.connect(remote.getGlobal('sharedSettings').serverAddress)
 
 var authCode = remote.getGlobal('sharedSettings').authCode
 
 socket.emit('list_courses')
 socket.on('course_list', function(response) {
-    loadCourses(response);
+    loadCourses(response)
 })
 
 ipcRenderer.on('forceReload', () =>
 {
-    location.reload();
+    location.reload()
 })
 
 socket.on('status_change', function(response){
@@ -38,7 +38,7 @@ socket.on('status_change', function(response){
     }
     if(responseData.message !== null)
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = document.documentElement.scrollTop = 0
         messageDiv.style.visibility = "visible"
         messageDiv.style.display = "block"
         messageDiv.innerHTML = responseData.message
@@ -51,10 +51,44 @@ socket.on('refresh_course_list', function(){
 	socket.emit('list_courses')
 })
 
+function changeSubmissionEnabled(object){
+    socket.emit('change_submission_enabled', JSON.parse(object.value), authCode)
+}
 
 function loadCourses(data){
+    responseArray = JSON.parse(data)
     var courseTableBuild = ''
     courseTableBuild += '<thead>'
+    courseTableBuild += '<tr>'
+    courseTableBuild += '<td colspan="6" class="celldisplay" style="padding-top: 3px; padding-bottom: 3px;">'
+    courseTableBuild += 'Course submission is '
+    switch(responseArray['submissionEnabled']){
+        case true:
+            courseTableBuild += "<select class='courseStatusSelect' style='background-color: green; color: white' onchange='changeSubmissionEnabled(this);'>"
+            courseTableBuild += "<option selected='selected' value='true'>enabled</option>"
+            courseTableBuild += "<option value='false' style='background-color:red'>disabled</option>"
+            courseTableBuild += "</select>"
+            break
+        case false:
+            courseTableBuild += "<select class='courseStatusSelect' style='background-color: red; color: white' onchange='changeSubmissionEnabled(this);'>"
+            courseTableBuild += "<option value='true' style='background-color: green'>enabled</option>"
+            courseTableBuild += "<option selected='selected' value='false'>disabled</option>"
+            courseTableBuild += "</select>"
+            break
+    }
+    courseTableBuild += '.</td>'
+    courseTableBuild += '</tr>'
+    courseTableBuild += '<tr>'
+    courseTableBuild += '<td class="celldisplay">'
+    courseTableBuild += '<input id="newCourseCode" onfocusin="newCourseFocusIn(this)" onfocusout="newCourseFocusOut(this)" value="XXX-XXX-XXX">'
+    courseTableBuild += '</td>'
+    courseTableBuild += '<td class="celldisplay">'
+    courseTableBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
+    courseTableBuild += '</td>'
+    courseTableBuild += '<td colspan="4" class="celldisplay">'
+    courseTableBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
+    courseTableBuild += '</td>'
+    courseTableBuild += '</tr>'
     courseTableBuild += '   <tr>'
     courseTableBuild += '       <th class="celldisplay">Course Code</th>'
     courseTableBuild += '       <th class="celldisplay">Submitter</th>'
@@ -63,28 +97,15 @@ function loadCourses(data){
     courseTableBuild += '       <th class="celldisplay">Status</th>'
     courseTableBuild += '       <th class="celldisplay">Delete</th>'
     courseTableBuild += '  </tr>'
-    courseTableBuild += '</thead>'
     courseTableBuild += '<tbody id="coursebody">'
     courseTableBuild += '   <tr>'
     courseTableBuild += '       <td colspan="3"><img src="./images/loading.gif"></td>'
     courseTableBuild += '   </tr>'
     courseTableBuild += '</tbody>'
     document.getElementById('coursetable').innerHTML = courseTableBuild
-    var courses = JSON.parse(data)['courseList'];
-    console.log(courses)
+    var courses = responseArray['courseList']
     courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
     var courseBodyBuild = ''
-    courseBodyBuild += '<tr>'
-    courseBodyBuild += '<td class="celldisplay">'
-    courseBodyBuild += '<input id="newCourseCode" onfocusin="newCourseFocusIn(this)" onfocusout="newCourseFocusOut(this)" value="XXX-XXX-XXX">'
-    courseBodyBuild += '</td>'
-    courseBodyBuild += '<td class="celldisplay">'
-    courseBodyBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
-    courseBodyBuild += '</td>'
-    courseBodyBuild += '<td colspan="4" class="celldisplay">'
-    courseBodyBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
-    courseBodyBuild += '</td>'
-    courseBodyBuild += '</tr>'
     var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
     var submittedDate = new Date()
     var updatedDate = new Date()
@@ -111,9 +132,9 @@ function loadCourses(data){
             statusValue += '<td class="celldisplay" style="background-color: red; color: white;">'
             statusValue += '<select class="courseStatusSelect" style="background-color: red; color: white;" name="' + course.CourseID + '" id="' + course.CourseID + '" onchange="smm2_updateStatus(this);">'
             statusValue += '<option selected="selected">Unplayed</option>'
-            statusValue += '<option>Playing</option>'
-            statusValue += '<option>Played</option>'
-            statusValue += '<option>Completed</option>'
+            statusValue += '<option style="background-color: yellow; color: black;">Playing</option>'
+            statusValue += '<option style="background-color: lightgreen; color: black;">Played</option>'
+            statusValue += '<option style="background-color: green; color: white;">Completed</option>'
             statusValue += '</select>'
             statusValue += '</td>'
             break
@@ -122,8 +143,8 @@ function loadCourses(data){
             statusValue += '<select class="courseStatusSelect" style="background-color: yellow" name="' + course.CourseID + '" id="' + course.CourseID + '" onchange="smm2_updateStatus(this);">'
             statusValue += '<option>Unplayed</option>'
             statusValue += '<option selected="selected">Playing</option>'
-            statusValue += '<option>Played</option>'
-            statusValue += '<option>Completed</option>'
+            statusValue += '<option style="background-color: lightgreen; color: black;">Played</option>'
+            statusValue += '<option style="background-color: green; color: white;">Completed</option>'
             statusValue += '</select>'
             statusValue += '</td>'
             break
@@ -131,9 +152,9 @@ function loadCourses(data){
             statusValue += '<td class="celldisplay" style="background-color: lightgreen; color: black;">'
             statusValue += '<select class="courseStatusSelect" style="background-color: lightgreen; color: black;" name="' + course.CourseID + '" id="' + course.CourseID + '" onchange="smm2_updateStatus(this);">'
             statusValue += '<option>Unplayed</option>'
-            statusValue += '<option>Playing</option>'
+            statusValue += '<option style="background-color: yellow; color: black;">Playing</option>'
             statusValue += '<option selected="selected">Played</option>'
-            statusValue += '<option>Completed</option>'
+            statusValue += '<option style="background-color: green; color: white;">Completed</option>'
             statusValue += '</select>'
             statusValue += '</td>'
             break
@@ -141,8 +162,8 @@ function loadCourses(data){
             statusValue += '<td class="celldisplay" style="background-color: green; color: white">'
             statusValue += '<select class="courseStatusSelect" style="background-color: green; color: white" name="' + course.CourseID + '" id="' + course.CourseID + '" onchange="smm2_updateStatus(this);">'
             statusValue += '<option>Unplayed</option>'
-            statusValue += '<option>Playing</option>'
-            statusValue += '<option>Played</option>'
+            statusValue += '<option style="background-color: yellow; color: black;">Playing</option>'
+            statusValue += '<option style="background-color: lightgreen; color: black;">Played</option>'
             statusValue += '<option selected="selected">Completed</option>'
             statusValue += '</select>'
             statusValue += '</td>'
@@ -152,7 +173,7 @@ function loadCourses(data){
         courseBodyBuild += '<td class="celldisplay" style="color: red">'
         courseBodyBuild += '<a href="#" data-courseid="' + course.CourseID + '" onclick="smm2_removeCourse(this)">X</a>'
         courseBodyBuild += '</td>'
-    });
+    })
     courseBodyBuild += '</tr>'
     document.getElementById('coursebody').innerHTML = courseBodyBuild
 }
@@ -169,13 +190,13 @@ function smm2_addCourse(){
         var messageDiv = document.getElementById('messagediv')
         setTimeout(() => {
             messageDiv.className = ''
-        }, 1000);
+        }, 1000)
         messageDiv.className = "redfade"
         messageDiv.style.color = "red"
         messageDiv.style.visibility = "visible"
         messageDiv.style.display = "block"
         messageDiv.innerHTML = "Please enter a course code and person's name"
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = document.documentElement.scrollTop = 0
     }
 }
 
@@ -238,7 +259,7 @@ socket.on('course_add', function(response){
     }
     if(responseData.message !== null)
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = document.documentElement.scrollTop = 0
         messageDiv.style.visibility = "visible"
         messageDiv.style.display = "block"
         messageDiv.innerHTML = responseData.message
@@ -278,7 +299,7 @@ socket.on('course_remove', function(response){
     }
     if(responseData.message !== null)
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = document.documentElement.scrollTop = 0
         messageDiv.style.visibility = "visible"
         messageDiv.style.display = "block"
         messageDiv.innerHTML = responseData.message
@@ -314,7 +335,7 @@ socket.on('course_update', function(response) {
     }
     if(responseData.message !== null)
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        document.body.scrollTop = document.documentElement.scrollTop = 0
         messageDiv.style.visibility = "visible"
         messageDiv.style.display = "block"
         messageDiv.innerHTML = responseData.message
