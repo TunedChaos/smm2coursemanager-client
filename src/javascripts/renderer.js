@@ -70,9 +70,9 @@ function loadCourses(data){
     courseTableBuild += '   </tr>'
     courseTableBuild += '</tbody>'
     document.getElementById('coursetable').innerHTML = courseTableBuild
-    var courses = JSON.parse(data);
+    var courses = JSON.parse(data)['courseList'];
+    console.log(courses)
     courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
-    console.log(courses);
     var courseBodyBuild = ''
     courseBodyBuild += '<tr>'
     courseBodyBuild += '<td class="celldisplay">'

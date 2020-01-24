@@ -172,6 +172,7 @@ function createWindows () {
   })
 
   // Open the DevTools.
+  mainWindow.webContents.openDevTools()
   if(enableSMM2Debug)
   {
     childWindow = new BrowserWindow({
