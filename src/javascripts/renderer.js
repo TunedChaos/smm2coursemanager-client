@@ -11,7 +11,7 @@ var socket = io.connect(remote.getGlobal('sharedSettings').serverAddress)
 
 var authCode = remote.getGlobal('sharedSettings').authCode
 
-var thisPlatform = "SMM2 Course Manager Client"
+var thisPlatform = "SMM2CMC"
 var thisPlatformID = "0"
 
 socket.emit('list_courses')
