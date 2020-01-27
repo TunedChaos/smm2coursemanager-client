@@ -11,6 +11,9 @@ var socket = io.connect(remote.getGlobal('sharedSettings').serverAddress)
 
 var authCode = remote.getGlobal('sharedSettings').authCode
 
+var thisPlatform = "SMM2 Course Manager Client"
+var thisPlatformID = "0"
+
 socket.emit('list_courses')
 socket.on('course_list', function(response) {
     loadCourses(response)
@@ -52,15 +55,23 @@ socket.on('refresh_course_list', function(){
 })
 
 function changeSubmissionEnabled(object){
+    console.log(JSON.parse(object.value))
     socket.emit('change_submission_enabled', JSON.parse(object.value), authCode)
+}
+
+function changeMaxCourses(object){
+    console.log(JSON.parse(object.value))
+    socket.emit('change_max_courses_per_platform', JSON.parse(object.value), authCode)
 }
 
 function loadCourses(data){
     responseArray = JSON.parse(data)
+    console.log(responseArray)
     var courseTableBuild = ''
+    courseTableBuild += '<table id="coursetable" class="courseTableClass" style="border-bottom: 0">'
     courseTableBuild += '<thead>'
     courseTableBuild += '<tr>'
-    courseTableBuild += '<td colspan="6" class="celldisplay" style="padding-top: 3px; padding-bottom: 3px;">'
+    courseTableBuild += '<td class="celldisplay" style="padding-top: 3px; padding-bottom: 3px; width: 50%">'
     courseTableBuild += 'Course submission is '
     switch(responseArray['submissionEnabled']){
         case true:
@@ -77,7 +88,15 @@ function loadCourses(data){
             break
     }
     courseTableBuild += '.</td>'
+    courseTableBuild += '<td class="celldisplay" style="padding-top: 3px; padding-bottom: 3px;">'
+    courseTableBuild += 'Max courses per user per platform: '
+    courseTableBuild += '<input style="width: ' + (responseArray['coursesPerPlatform'].toString().length + 3) + 'ch;" type="number" id="coursesPerPlatform" value="' + responseArray['coursesPerPlatform'] + '" onchange="this.style.width = ((this.value.length + 3)) + \'ch\'; changeMaxCourses(this);">'
+    courseTableBuild += ' | 0 is Unlimited'
+    courseTableBuild += '</td>'
     courseTableBuild += '</tr>'
+    courseTableBuild += '</thead>'
+    courseTableBuild += '</table>'
+    courseTableBuild += '<table id="coursetable" class="courseTableClass">'
     courseTableBuild += '<tr>'
     courseTableBuild += '<td class="celldisplay">'
     courseTableBuild += '<input id="newCourseCode" onfocusin="newCourseFocusIn(this)" onfocusout="newCourseFocusOut(this)" value="XXX-XXX-XXX">'
@@ -102,7 +121,7 @@ function loadCourses(data){
     courseTableBuild += '       <td colspan="3"><img src="./images/loading.gif"></td>'
     courseTableBuild += '   </tr>'
     courseTableBuild += '</tbody>'
-    document.getElementById('coursetable').innerHTML = courseTableBuild
+    document.getElementById('tablesdiv').innerHTML = courseTableBuild
     var courses = responseArray['courseList']
     courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
     var courseBodyBuild = ''
@@ -185,7 +204,7 @@ function smm2_addCourse(){
     {
         newCourseCode = newCourseCodeField.value
         newSubmitter = newSubmitterField.value
-        socket.emit('add_course', newSubmitter, newCourseCode, authCode)
+        socket.emit('add_course', thisPlatform, thisPlatformID, newSubmitter, newCourseCode, authCode)
     }else{
         var messageDiv = document.getElementById('messagediv')
         setTimeout(() => {

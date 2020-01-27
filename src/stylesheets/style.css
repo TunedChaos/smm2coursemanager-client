@@ -31,6 +31,16 @@ a:active{
     width: 100%;
     border-collapse: collapse;
 }
+
+.courseTableClass{
+    background-color: white;
+    color: black;
+    margin: auto;
+    border-spacing: 0px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
 #contentcontainer {
     min-width: fit-content;
     width: 50%;
