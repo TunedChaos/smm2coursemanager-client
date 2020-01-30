@@ -104,13 +104,14 @@ function loadCourses(data){
     courseTableBuild += '<td class="celldisplay">'
     courseTableBuild += '<input id="newSubmitter" onfocusin="newSubmitterFocusIn(this)" onfocusout="newSubmitterFocusOut(this)" value="Person\'s Name">'
     courseTableBuild += '</td>'
-    courseTableBuild += '<td colspan="4" class="celldisplay">'
+    courseTableBuild += '<td colspan="5" class="celldisplay">'
     courseTableBuild += '<button type="button" onclick="smm2_addCourse()">Add Course</button>'
     courseTableBuild += '</td>'
     courseTableBuild += '</tr>'
     courseTableBuild += '   <tr>'
     courseTableBuild += '       <th class="celldisplay">Course Code</th>'
     courseTableBuild += '       <th class="celldisplay">Submitter</th>'
+    courseTableBuild += '       <th class="celldisplay">Platform</th>'
     courseTableBuild += '       <th class="celldisplay">Submitted on</th>'
     courseTableBuild += '       <th class="celldisplay">Last Updated on</th>'
     courseTableBuild += '       <th class="celldisplay">Status</th>'
@@ -125,7 +126,6 @@ function loadCourses(data){
     var courses = responseArray['courseList']
     courses.sort((a,b) => (a.Status > b.Status ? 1 : -1))
     var courseBodyBuild = ''
-    var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
     var submittedDate = new Date()
     var updatedDate = new Date()
     courses.forEach(course => {
@@ -138,6 +138,9 @@ function loadCourses(data){
         courseBodyBuild += '</td>'
         courseBodyBuild += '<td class="celldisplay">'
         courseBodyBuild += '<input class="updateInput" onchange="smm2_updateRecord(this)" data-course=\'' + courseJSON + '\' id="SubmitterRecord" type="text" value="' + course.Submitter + '">'
+        courseBodyBuild += '</td>'
+        courseBodyBuild += '<td class="celldisplay">'
+        courseBodyBuild += course.Platform
         courseBodyBuild += '</td>'
         courseBodyBuild += '<td class="celldisplay">'
         courseBodyBuild += submittedDate
